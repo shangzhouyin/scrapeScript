@@ -1,0 +1,7 @@
+Total link's STATUS
+===================
+492 Success links
+0 Redirection links
+20 Client error links
+9 Server error links
+Total link's validity: 94.43378119001919

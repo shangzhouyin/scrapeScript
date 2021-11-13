@@ -1,0 +1,14 @@
+Number of source code lines in Python:  113021
+Median number of source code lines in Python:  58.0
+Number of source code lines in R:  764
+Median number of source code lines in R:  16.0
+Number of source code lines in Typescript 677
+Median number of source code lines in Typescript 147.5
+Number of source code lines in c++ 277326
+Median number of source code lines in c++ 146
+Number of source code lines in c# 73146
+Median number of source code lines in c# 77.0
+Number of source code lines in ruby 16338
+Median number of source code lines in ruby 56.5
+Number of source code lines in Julia 71
+Median number of source code lines in Julia 8
