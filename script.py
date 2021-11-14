@@ -3,7 +3,7 @@ from urllib import request
 import re
 import requests
 
-#you have to change to your own path to test the script
+#change path to test the script
 path = "/Users/yinshangzhou/Desktop/scirpt/test"
 
 os.chdir(path)
@@ -14,12 +14,10 @@ def removeDuplicates(mylist):
     return mylist
 
 #find the url in the string      
-def Findurl(string):
+def findUrl(string):
     regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
     url = re.findall(regex,string)      
     return [x[0] for x in url]
-
-
 
 
 def getcode(path):
@@ -32,11 +30,11 @@ def getcode(path):
             if '.DS_Store' in file:
                 continue
             with open(os.path.join(root, file), "r") as auto:
-                s = auto.read()
-                c = Findurl(s)
-                c = removeDuplicates(c)
+                temp = auto.read()
+                urlString = findUrl(temp)
+                finalUrl = removeDuplicates(urlString)
                 
-                for url in c:
+                for url in finalUrl:
                     if (not url.startswith('http')) or url == 'https://www.wattsupmeters.com/secure/products.php?pn=0' or url == 'https://pax.grsecurity.net/docs/aslr.txt' or url == 'http://lenova.river-valley.com/svn/elsbst/trunk/New-Model-2/model2-names.bst':
                         continue
                     if(200 <= requests.get(url, headers = {"User-Agent": "Mozilla/5.0"}).status_code <= 299):
@@ -61,7 +59,7 @@ def output(successR, redirectM, clientE, serverE):
     print(str(redirectM) + " Redirection links")
     print(str(clientE) + " Client error links")
     print(str(serverE) + " Server error links")
-    print("Total link's validity: " + str(validity))
+    print("Total link's validity: " + str(validity) + "%")
   
                 
 def main():

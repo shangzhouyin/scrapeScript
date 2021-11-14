@@ -3,8 +3,6 @@ from statistics import median
 import requests
 
 url = "https://api.github.com/orgs/Kaggle/repos"
-
-
 resp = requests.get(url, headers = {"User-Agent": "Mozilla/5.0"}).json()
 
 
@@ -14,17 +12,17 @@ l_forks = []
 l_commits = []
 l_branches = []
 l_contributors = []
+l_contributors1=[]
 l_stars = []
 l_tags = []
 l_releases = []
 l_closed_issues = []
 l_environments = []
+
+
 for repo in resp:
     forks = repo['forks_count']
     l_forks.append(forks)
-    commits_url = repo['commits_url']
-    number_commits = len(commits_url)
-    l_commits.append(number_commits)
     branches_url = repo['branches_url']
     number_of_branches = len(branches_url)
     l_branches.append(number_of_branches)
@@ -45,7 +43,10 @@ for repo in resp:
     deployments = repo['deployments_url']
     number_of_environments = len(deployments)
     l_environments.append(number_of_environments)
-
+    commits_url = repo['commits_url']
+    number_commits = len(commits_url)
+    l_commits.append(number_commits)
+    
 sum_forks = sum(l_forks)
 median_forks = median(l_forks)
 print("Total number of forks: " + str(sum_forks) + ", median number of forks: " + str(median_forks))
