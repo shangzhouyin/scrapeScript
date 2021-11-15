@@ -2,8 +2,10 @@ from statistics import median
 
 import requests
 
+headers =  {"User-Agent": "Mozilla/5.0"}
+#headers = {"User-Agent": "Mozilla/5.0"}
 url = "https://api.github.com/orgs/Kaggle/repos"
-resp = requests.get(url, headers = {"User-Agent": "Mozilla/5.0"}).json()
+resp = requests.get(url, headers =  headers).json()
 
 
 print("There are " + str(len(resp)) + " repositories.")
@@ -20,31 +22,47 @@ l_closed_issues = []
 l_environments = []
 
 
+
 for repo in resp:
+    def getNextUrl(new_url):
+        new_url = new_url[0:-6] 
+        resp_new_level = requests.get(new_url, headers=headers)
+        next_level = resp_new_level.json()
+        count = len(next_level)
+        return count
+
     forks = repo['forks_count']
     l_forks.append(forks)
+
     branches_url = repo['branches_url']
-    number_of_branches = len(branches_url)
+    number_of_branches = getNextUrl(branches_url)
     l_branches.append(number_of_branches)
+
     stars = repo['stargazers_count']
     l_stars.append(stars)
+
     collaborators = repo['collaborators_url']
-    number_of_collaborators = len(collaborators)
+    number_of_collaborators = getNextUrl(collaborators)
     l_contributors.append(number_of_collaborators)
+
     tags = repo['tags_url']
-    number_tags = len(repo)
+    number_tags = getNextUrl(repo)
     l_tags.append(number_tags)
+
     releases = repo['releases_url']
-    number_releases = len(releases)
+    number_releases = getNextUrl(releases)
     l_releases.append(number_releases)
+
     issues = repo['issue_events_url']
-    number_of_issues = len(issues)
+    number_of_issues = getNextUrl(issues)
     l_closed_issues.append(number_of_issues)
+
     deployments = repo['deployments_url']
-    number_of_environments = len(deployments)
+    number_of_environments = getNextUrl(deployments)
     l_environments.append(number_of_environments)
+
     commits_url = repo['commits_url']
-    number_commits = len(commits_url)
+    number_commits = getNextUrl(commits_url)
     l_commits.append(number_commits)
     
 sum_forks = sum(l_forks)
