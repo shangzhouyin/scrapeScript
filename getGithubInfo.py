@@ -46,7 +46,7 @@ for repo in resp:
     l_contributors.append(number_of_collaborators)
 
     tags = repo['tags_url']
-    number_tags = getNextUrl(repo)
+    number_tags = getNextUrl(tags)
     l_tags.append(number_tags)
 
     releases = repo['releases_url']

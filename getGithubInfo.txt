@@ -1,10 +1,10 @@
 There are 11 repositories.
 Total number of forks: 2087, median number of forks: 14
-Total number of commits: 681, median number of commits: 62
-Total number of branches: 725, median number of branches: 66
-Total number of contributors: 846, median number of contributors: 77
-Total number of stars: 6943, median number of stars: 36
-Total number of tags: 858, median number of tags: 78
-Total number of releases: 681, median number of releases: 62
-Total number of closed issues: 780, median number of issues: 71
-Total number of environments: 659, median number of environments: 60
+Total number of commits: 189, median number of commits: 30
+Total number of branches: 22, median number of branches: 2
+Total number of contributors: 22, median number of contributors: 2
+Total number of stars: 6953, median number of stars: 36
+Total number of tags: 22, median number of tags: 2
+Total number of releases: 22, median number of releases: 2
+Total number of closed issues: 22, median number of issues: 2
+Total number of environments: 22, median number of environments: 2
